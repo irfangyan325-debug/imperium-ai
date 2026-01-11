@@ -1,0 +1,59 @@
+/* src/styles/globals.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --imperium-black: #1A1916;
+  --imperium-red: #5A1818;
+  --imperium-gold: #A48D60;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--imperium-black);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(164, 141, 96, 0.25);
+} */
+
+
+
+/* src/app/globals.css */
+@import "tailwindcss";
+
+:root {
+  --imperium-black: #1A1916;
+  --imperium-red: #5A1818;
+  --imperium-gold: #A48D60;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--imperium-black);
+  color: rgba(255, 255, 255, 0.86);
+  margin: 0;
+}
+
+/* Make interactions feel deliberate */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(164, 141, 96, 0.25);
+}
