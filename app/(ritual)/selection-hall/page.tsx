@@ -45,12 +45,12 @@ export default function SelectionHallPage() {
               mentor={m}
               active={idx === active}
               onHover={() => setActive(idx)}
-              // MentorCard itself navigates using ROUTES now (see note below)
             />
           ))}
         </div>
+       
       </div>
-     <DownArrowHint />
+       <DownArrowHint />
     </RitualShell>
   );
 }
