@@ -73,7 +73,7 @@ export default function MentorChamberPage() {
   const response = MOCK[mentor.key];
 
   return (
-    <RitualShell className="py-14">
+    <RitualShell className="">
       <div
         className="pointer-events-none absolute inset-0 opacity-60"
         style={{

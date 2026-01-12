@@ -15,7 +15,7 @@ export function RitualShell({ children, className }: RitualShellProps) {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_500px_at_60%_0%,rgba(255,255,255,0.06),transparent_55%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_900px_at_50%_50%,transparent_40%,rgba(0,0,0,0.75)_100%)]" />
 
-      <main className="relative mx-auto flex min-h-screen w-full max-w-[1100px] flex-col px-6 py-10">
+      <main className="relative mx-auto flex min-h-screen w-full flex-col px-6 py-10">
         <div className="pb-10">
           <TopSigil />
         </div>

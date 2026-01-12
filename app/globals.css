@@ -29,7 +29,8 @@ body {
 
 
 
-/* src/app/globals.css */
+/* app/globals.css */
+@config "../tailwind.config.ts";
 @import "tailwindcss";
 
 :root {
@@ -44,12 +45,10 @@ body {
 }
 
 body {
+  margin: 0;
   background: var(--imperium-black);
   color: rgba(255, 255, 255, 0.86);
-  margin: 0;
 }
-
-/* Make interactions feel deliberate */
 * {
   -webkit-tap-highlight-color: transparent;
 }

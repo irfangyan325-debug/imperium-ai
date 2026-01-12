@@ -49,9 +49,8 @@ export default function SelectionHallPage() {
             />
           ))}
         </div>
-
-        <DownArrowHint />
       </div>
+     <DownArrowHint />
     </RitualShell>
   );
 }
