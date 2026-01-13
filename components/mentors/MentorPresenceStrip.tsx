@@ -17,7 +17,7 @@ export function MentorPresenceStrip() {
               src={m.imageSrc}
               alt={m.name}
               fill
-              className="object-cover object-top opacity-70 brightness-[0.75]"
+              className="object-cover object-top opacity-70 brightness-[0.85]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.40),rgba(0,0,0,0.85))]" />
           </div>
