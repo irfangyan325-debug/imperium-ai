@@ -1,4 +1,3 @@
-// src/components/mentors/AskBubble.tsx
 import { cn } from "@/lib/cn";
 
 export function AskBubble({ text, className }: { text: string; className?: string }) {

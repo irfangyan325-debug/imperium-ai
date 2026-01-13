@@ -6,7 +6,7 @@ import { MENTORS } from "@/config/mentors";
 
 export function MentorPresenceStrip() {
   return (
-    <div className="grid grid-cols-3 gap-3 md:gap-5">
+    <div className="grid grid-cols-3 gap-3 md:gap-5 h-[320px]">
       {MENTORS.map((m) => (
         <div
           key={m.key}
@@ -22,7 +22,7 @@ export function MentorPresenceStrip() {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.40),rgba(0,0,0,0.85))]" />
           </div>
 
-          <div className="px-3 py-3 md:px-4 md:py-4">
+          <div className="px-3 py-3 md:px-4 md:py-4 text-center">
             <div className="font-[var(--font-cinzel)] uppercase tracking-imperial text-imperium-gold text-[11px] md:text-[12px]">
               {m.name}
             </div>

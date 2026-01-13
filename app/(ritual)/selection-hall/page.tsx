@@ -50,7 +50,10 @@ export default function SelectionHallPage() {
         </div>
        
       </div>
-       <DownArrowHint />
+      <div className="mt-10">
+         <DownArrowHint />
+      </div>
+      
     </RitualShell>
   );
 }
