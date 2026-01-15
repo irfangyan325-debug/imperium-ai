@@ -114,7 +114,7 @@ export function MentorScene({ mentors, activeIndex, onFocus }: MentorSceneProps)
               }}
               style={{
                 background:
-                  "radial-gradient(560px 360px at 50% 22%, rgba(164,141,96,0.18), transparent 66%)",
+                  "radial-gradient(560px 360px at 50% 22%, rgba(164,141,96,0.18), transparent 5%)",
               }}
             />
 

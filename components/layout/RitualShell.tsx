@@ -36,7 +36,6 @@ export function RitualShell({ children, className }: RitualShellProps) {
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(900px_500px_at_60%_0%,rgba(255,255,255,0.06),transparent_55%)]" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(1200px_900px_at_50%_50%,transparent_40%,rgba(0,0,0,0.82)_100%)]" />
 
-      {/* ✅ Smoke sits ABOVE background (z-[5]) but BELOW content (z-10) */}
       <BottomSmokeVideo />
 
       <main className="relative z-10 mx-auto flex min-h-screen w-full flex-col px-6 py-10">
