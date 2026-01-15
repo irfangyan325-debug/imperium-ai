@@ -1,13 +1,20 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import { RitualShell } from "@/components/layout/RitualShell";
 import { FadeSwap } from "@/components/ui/FadeSwap";
 import { DownArrowHint } from "@/components/ui/DownArrowHint";
+import { MentorScene } from "@/components/mentors/MentorScene";
+import { GoldButton } from "@/components/ui/GoldButton";
+
+import { AmbientSmoke } from "@/components/fx/AmbientSmoke";
+import { AmbientParticles } from "@/components/fx/AmbientParticles";
+
 import { MENTORS } from "@/config/mentors";
 import { ROUTES } from "@/config/routes";
-import { MentorScene } from "@/components/mentors/MentorScene";
-import { useRouter } from "next/navigation";
+import { cn } from "@/lib/cn";
 
 export default function SelectionHallPage() {
   const mentors = useMemo(() => MENTORS, []);
@@ -17,8 +24,11 @@ export default function SelectionHallPage() {
   return (
     <RitualShell className="py-14">
       <div className="relative">
-        {/* keep your FadeSwap if you want, but now scene dominates */}
         <FadeSwap activeIndex={active} count={mentors.length} />
+
+        {/* Atmospheric motion layers */}
+        <AmbientParticles />
+        <AmbientSmoke />
 
         {/* Title */}
         <div className="relative z-10 text-center">
@@ -35,33 +45,17 @@ export default function SelectionHallPage() {
           <MentorScene mentors={mentors} activeIndex={active} onFocus={setActive} />
         </div>
 
-        {/* MAIN CTAs (big, cinematic) */}
-        <div className="relative z-10 mx-auto mt-10 grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+        {/* Main CTAs (big + cinematic) */}
+        <div className="relative z-10 mx-auto mt-10 grid w-full grid-cols-1 gap-5 md:grid-cols-3">
           {mentors.map((m) => (
-            <button
+            <GoldButton
               key={m.key}
+              fullWidth
+              className={cn("py-5 md:py-6", "text-[13px] md:text-[14px]")}
               onClick={() => router.push(ROUTES.mentor(m.key))}
-              className="
-                group relative overflow-hidden
-                border-2 border-imperium-gold/65
-                bg-black/30
-                px-6 py-5
-                text-center
-                shadow-[0_0_28px_rgba(164,141,96,0.12)]
-                transition-all duration-700
-                hover:bg-imperium-gold/10
-                "
             >
-              {/* subtle gold sheen on hover (motion step later can refine) */}
-              <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-[linear-gradient(90deg,transparent,rgba(164,141,96,0.18),transparent)]" />
-
-              <div className="font-[var(--font-cinzel)] uppercase tracking-imperial text-imperium-gold text-[12px] md:text-[13px]">
-                {m.cta}
-              </div>
-              <div className="mt-2 font-[var(--font-cinzel)] uppercase tracking-imperial text-white/55 text-[10px]">
-                ENTER CHAMBER
-              </div>
-            </button>
+              {m.cta}
+            </GoldButton>
           ))}
         </div>
 
