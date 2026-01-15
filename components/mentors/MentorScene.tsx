@@ -64,6 +64,17 @@ export function MentorScene({ mentors, activeIndex, onFocus }: MentorSceneProps)
                   "radial-gradient(520px 340px at 40% 25%, rgba(164,141,96,0.22), transparent 65%)",
               }}
             />
+
+            {/* Face halo (subtle, active only) */}
+            {activeIndex === 0 && (
+              <div
+                className="pointer-events-none absolute inset-0 opacity-[0.12]"
+                style={{
+                  background:
+                    "radial-gradient(220px 160px at 52% 22%, rgba(164,141,96,0.30), transparent 70%)",
+                }}
+              />
+            )}
           </button>
 
           {/* Napoleon */}
@@ -106,6 +117,17 @@ export function MentorScene({ mentors, activeIndex, onFocus }: MentorSceneProps)
                   "radial-gradient(560px 360px at 50% 22%, rgba(164,141,96,0.18), transparent 66%)",
               }}
             />
+
+            {/* Face halo (subtle, active only) */}
+            {activeIndex === 1 && (
+              <div
+                className="pointer-events-none absolute inset-0 opacity-[0.11]"
+                style={{
+                  background:
+                    "radial-gradient(240px 170px at 50% 20%, rgba(164,141,96,0.24), transparent 72%)",
+                }}
+              />
+            )}
           </button>
 
           {/* Aurelius */}
@@ -150,9 +172,20 @@ export function MentorScene({ mentors, activeIndex, onFocus }: MentorSceneProps)
                   "radial-gradient(600px 380px at 60% 20%, rgba(255,255,255,0.14), transparent 66%)",
               }}
             />
+
+            {/* Face halo (subtle, active only) */}
+            {activeIndex === 2 && (
+              <div
+                className="pointer-events-none absolute inset-0 opacity-[0.12]"
+                style={{
+                  background:
+                    "radial-gradient(240px 170px at 50% 18%, rgba(255,255,255,0.22), transparent 72%)",
+                }}
+              />
+            )}
           </button>
 
-          {/* Soft fades BETWEEN columns (no overlap, just fade zones) */}
+          {/* Soft fades BETWEEN columns */}
           <div className="pointer-events-none absolute inset-y-0 left-1/3 w-[10%] -translate-x-1/2 bg-[linear-gradient(90deg,rgba(0,0,0,0.0),rgba(0,0,0,0.78),rgba(0,0,0,0.0))] opacity-70" />
           <div className="pointer-events-none absolute inset-y-0 left-2/3 w-[10%] -translate-x-1/2 bg-[linear-gradient(90deg,rgba(0,0,0,0.0),rgba(0,0,0,0.78),rgba(0,0,0,0.0))] opacity-70" />
 
@@ -160,27 +193,45 @@ export function MentorScene({ mentors, activeIndex, onFocus }: MentorSceneProps)
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.55),transparent_45%,rgba(0,0,0,0.92))]" />
         </div>
 
-        {/* Name strip */}
-        <div className="grid grid-cols-3 border-t border-imperium-gold/18 bg-black/35">
-          {[m0, m1, m2].map((m, idx) => (
-            <button
-              key={m.key}
-              type="button"
-              onMouseEnter={() => onFocus(idx)}
-              onFocus={() => onFocus(idx)}
-              className={cn(
-                "px-4 py-4 text-center outline-none transition-colors duration-700",
-                idx === activeIndex ? "text-imperium-gold" : "text-white/60"
-              )}
-            >
-              <div className="font-[var(--font-cinzel)] uppercase tracking-imperial text-[12px] md:text-[13px]">
-                {m.name}
-              </div>
-              <div className="mt-1 font-[var(--font-cinzel)] uppercase tracking-imperial text-[10px] text-white/45">
-                {m.title}
-              </div>
-            </button>
-          ))}
+        {/* Name strip (from Step 5) */}
+        <div className="grid grid-cols-3 border-t border-imperium-gold/18 bg-black/40">
+          {[m0, m1, m2].map((m, idx) => {
+            const active = idx === activeIndex;
+            return (
+              <button
+                key={m.key}
+                type="button"
+                onMouseEnter={() => onFocus(idx)}
+                onFocus={() => onFocus(idx)}
+                className="relative px-4 py-4 text-center outline-none transition-colors duration-700"
+              >
+                <span
+                  className={cn(
+                    "pointer-events-none absolute left-1/2 top-0 h-[2px] w-10 -translate-x-1/2",
+                    active
+                      ? "bg-imperium-gold shadow-[0_0_14px_rgba(164,141,96,0.55)]"
+                      : "bg-transparent"
+                  )}
+                />
+                <div
+                  className={cn(
+                    "imperial-smallcaps text-[12px] md:text-[13px] leading-none",
+                    active ? "text-imperium-gold" : "text-white/62"
+                  )}
+                >
+                  {m.name}
+                </div>
+                <div
+                  className={cn(
+                    "mt-2 imperial-text text-[10px] leading-none",
+                    active ? "text-white/55" : "text-white/38"
+                  )}
+                >
+                  {m.title}
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

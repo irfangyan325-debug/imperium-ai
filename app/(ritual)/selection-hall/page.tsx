@@ -7,14 +7,14 @@ import { RitualShell } from "@/components/layout/RitualShell";
 import { FadeSwap } from "@/components/ui/FadeSwap";
 import { DownArrowHint } from "@/components/ui/DownArrowHint";
 import { MentorScene } from "@/components/mentors/MentorScene";
-import { GoldButton } from "@/components/ui/GoldButton";
 
 import { AmbientSmoke } from "@/components/fx/AmbientSmoke";
 import { AmbientParticles } from "@/components/fx/AmbientParticles";
 
+import { DecreePlateButton } from "@/components/ui/DecreePlateButton";
+
 import { MENTORS } from "@/config/mentors";
 import { ROUTES } from "@/config/routes";
-import { cn } from "@/lib/cn";
 
 export default function SelectionHallPage() {
   const mentors = useMemo(() => MENTORS, []);
@@ -26,41 +26,44 @@ export default function SelectionHallPage() {
       <div className="relative">
         <FadeSwap activeIndex={active} count={mentors.length} />
 
-        {/* Atmospheric motion layers */}
+        {/* Atmospheric layers */}
         <AmbientParticles />
         <AmbientSmoke />
 
-        {/* Title */}
+        {/* Title block */}
         <div className="relative z-10 text-center">
-          <div className="font-[var(--font-cinzel)] uppercase tracking-imperial text-imperium-gold text-3xl md:text-4xl">
+          <div className="imperial-smallcaps text-imperium-gold text-[34px] leading-[1.05] md:text-[44px]">
             THE SELECTION HALL
           </div>
-          <div className="mt-3 font-[var(--font-cinzel)] uppercase tracking-imperial text-white/60 text-[12px] md:text-[13px]">
-            Choose who shapes you.
+
+          <div className="mt-4 imperial-text text-white/55 text-[11px] md:text-[12px]">
+            CHOOSE WHO SHAPES YOU
           </div>
+
+          <div className="mx-auto mt-6 h-px w-[240px] bg-imperium-gold/18 md:w-[320px]" />
         </div>
 
-        {/* Mentor scene composition */}
+        {/* Scene */}
         <div className="relative z-10">
           <MentorScene mentors={mentors} activeIndex={active} onFocus={setActive} />
         </div>
 
-        {/* Main CTAs (big + cinematic) */}
+        {/* Main CTAs (Decree Plate style) */}
         <div className="relative z-10 mx-auto mt-10 grid w-full grid-cols-1 gap-5 md:grid-cols-3">
           {mentors.map((m) => (
-            <GoldButton
+            <DecreePlateButton
               key={m.key}
               fullWidth
-              className={cn("py-5 md:py-6", "text-[13px] md:text-[14px]")}
               onClick={() => router.push(ROUTES.mentor(m.key))}
             >
               {m.cta}
-            </GoldButton>
+            </DecreePlateButton>
           ))}
         </div>
 
-        <DownArrowHint />
+        
       </div>
+      <div className="mt-15"><DownArrowHint /></div>
     </RitualShell>
   );
 }
