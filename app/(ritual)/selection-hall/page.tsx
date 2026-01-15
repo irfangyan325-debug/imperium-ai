@@ -2,58 +2,71 @@
 
 import { useMemo, useState } from "react";
 import { RitualShell } from "@/components/layout/RitualShell";
-import { MentorCard } from "@/components/mentors/MentorCard";
 import { FadeSwap } from "@/components/ui/FadeSwap";
 import { DownArrowHint } from "@/components/ui/DownArrowHint";
 import { MENTORS } from "@/config/mentors";
 import { ROUTES } from "@/config/routes";
+import { MentorScene } from "@/components/mentors/MentorScene";
+import { useRouter } from "next/navigation";
 
 export default function SelectionHallPage() {
   const mentors = useMemo(() => MENTORS, []);
-  const [active, setActive] = useState(1); // default focus = center mentor
+  const [active, setActive] = useState(1);
+  const router = useRouter();
 
   return (
     <RitualShell className="py-14">
       <div className="relative">
+        {/* keep your FadeSwap if you want, but now scene dominates */}
         <FadeSwap activeIndex={active} count={mentors.length} />
 
-        {/* Title area */}
-        <div className="relative z-10">
-          <div className="font-[var(--font-cinzel)] uppercase tracking-imperial text-imperium-gold text-center text-3xl md:text-4xl">
+        {/* Title */}
+        <div className="relative z-10 text-center">
+          <div className="font-[var(--font-cinzel)] uppercase tracking-imperial text-imperium-gold text-3xl md:text-4xl">
             THE SELECTION HALL
           </div>
-          <div className="mt-3 text-center text-white/65 font-[var(--font-cinzel)] uppercase tracking-imperial text-[12px] md:text-[13px]">
+          <div className="mt-3 font-[var(--font-cinzel)] uppercase tracking-imperial text-white/60 text-[12px] md:text-[13px]">
             Choose who shapes you.
           </div>
-
-          {/* Optional link to Hall (kept minimal) */}
-          <div className="mt-4 text-center">
-            <a
-              href={ROUTES.hall}
-              className="font-[var(--font-cinzel)] uppercase tracking-imperial text-[11px] text-white/45 hover:text-white/70 transition-opacity duration-700"
-            >
-              ENTER THE HALL →
-            </a>
-          </div>
         </div>
 
-        {/* Mentor grid */}
-        <div className="relative z-10 mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {mentors.map((m, idx) => (
-            <MentorCard
+        {/* Mentor scene composition */}
+        <div className="relative z-10">
+          <MentorScene mentors={mentors} activeIndex={active} onFocus={setActive} />
+        </div>
+
+        {/* MAIN CTAs (big, cinematic) */}
+        <div className="relative z-10 mx-auto mt-10 grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+          {mentors.map((m) => (
+            <button
               key={m.key}
-              mentor={m}
-              active={idx === active}
-              onHover={() => setActive(idx)}
-            />
+              onClick={() => router.push(ROUTES.mentor(m.key))}
+              className="
+                group relative overflow-hidden
+                border-2 border-imperium-gold/65
+                bg-black/30
+                px-6 py-5
+                text-center
+                shadow-[0_0_28px_rgba(164,141,96,0.12)]
+                transition-all duration-700
+                hover:bg-imperium-gold/10
+                "
+            >
+              {/* subtle gold sheen on hover (motion step later can refine) */}
+              <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-[linear-gradient(90deg,transparent,rgba(164,141,96,0.18),transparent)]" />
+
+              <div className="font-[var(--font-cinzel)] uppercase tracking-imperial text-imperium-gold text-[12px] md:text-[13px]">
+                {m.cta}
+              </div>
+              <div className="mt-2 font-[var(--font-cinzel)] uppercase tracking-imperial text-white/55 text-[10px]">
+                ENTER CHAMBER
+              </div>
+            </button>
           ))}
         </div>
-       
+
+        <DownArrowHint />
       </div>
-      <div className="mt-10">
-         <DownArrowHint />
-      </div>
-      
     </RitualShell>
   );
 }

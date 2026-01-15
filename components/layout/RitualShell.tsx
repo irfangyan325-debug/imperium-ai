@@ -19,12 +19,10 @@ export function RitualShell({ children, className }: RitualShellProps) {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(
-              180deg,
-              rgba(0,0,0,0.75),
-              rgba(0,0,0,0.88)
-            ),
-            url('/backgrounds/ritual-hall.jpg')
+             radial-gradient(1200px 700px at 50% 15%, rgba(164,141,96,0.10), transparent 20%),
+              radial-gradient(1200px 900px at 50% 55%, transparent 40%, rgba(0,0,0,0.88) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.94)),
+            url('/textures/black-marble.jpg')
           `,
           backgroundSize: "cover",
           backgroundPosition: "center",
