@@ -64,7 +64,7 @@ export default function SelectionHallPage() {
         
       </div>
       
-      <div className="mt-20">
+      <div className="mt-10 flex justify-center">
         <DownArrowHint />
       </div>
     </RitualShell>

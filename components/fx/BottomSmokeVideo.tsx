@@ -49,12 +49,12 @@ export function BottomSmokeVideo({ className }: { className?: string }) {
       {/* This adds softness so the edge feels smoky, not cut */}
       <div
         className="
-          pointer-events-none absolute top-10 left-0 right-0
+          pointer-events-none absolute top-0 left-0 right-0
           h-[90px]
           bg-[linear-gradient(
             180deg,
-            rgba(26,25,22,0.85),
-            rgba(26,25,22,0.55),
+            rgba(26,25,22,0.35),
+            rgba(26,25,22,0.25),
             transparent
           )]
           backdrop-blur-[-10px]
