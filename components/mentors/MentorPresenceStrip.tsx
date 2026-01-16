@@ -6,13 +6,13 @@ import { MENTORS } from "@/config/mentors";
 
 export function MentorPresenceStrip() {
   return (
-    <div className="grid grid-cols-3 gap-3 md:gap-5 h-[320px]">
+    <div className="grid grid-cols-3 gap-3 md:gap-5 h-[420px]">
       {MENTORS.map((m) => (
         <div
           key={m.key}
           className="relative overflow-hidden border border-imperium-gold/22 bg-[rgba(0,0,0,0.45)]"
         >
-          <div className="relative h-[120px] md:h-[160px] w-full">
+          <div className="relative h-[340px] w-full ">
             <Image
               src={m.imageSrc}
               alt={m.name}
