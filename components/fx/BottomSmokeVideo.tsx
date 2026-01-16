@@ -1,37 +1,48 @@
 "use client";
 
 import { cn } from "@/lib/cn";
+import { useRef } from "react";
 
 export function BottomSmokeVideo({ className }: { className?: string }) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   return (
     <div
       className={cn(
-        "pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[300px] overflow-hidden",
+        "pointer-events-none absolute inset-x-0 bottom-0 z-[5] overflow-hidden",
+        "h-[360px] md:h-[420px]",
         className
       )}
       aria-hidden
     >
       {/* ================= SMOKE VIDEO ================= */}
       <video
+        ref={videoRef}
         autoPlay
         muted
-        loop
+        loop // primary loop
         playsInline
         preload="auto"
+        onEnded={() => {
+          // fallback loop (guarantees replay)
+          if (videoRef.current) {
+            videoRef.current.currentTime = 0;
+            videoRef.current.play();
+          }
+        }}
         className="
-          absolute bottom-[-12%] left-1/2 -translate-x-1/2
-          w-[160%] md:w-[140%]
-          opacity-80
-          mix-blend-screen
+          absolute inset-x-0 bottom-[-10%]
+          h-[120%] w-full
           object-cover
-          blur-[1.5px]
+          opacity-85
+          mix-blend-screen
+          blur-[1.6px]
         "
       >
         <source src="/smoke/smoke-bottom.mp4" type="video/mp4" />
       </video>
 
-      {/* ================= TOP SOFT FADE (TRANSPARENCY) ================= */}
-      {/* This makes the TOP disappear smoothly */}
+      {/* ================= TOP DISSOLVE ================= */}
       <div
         className="
           pointer-events-none absolute inset-0
@@ -39,25 +50,24 @@ export function BottomSmokeVideo({ className }: { className?: string }) {
             to_top,
             black 0%,
             black 55%,
-            rgba(0,0,0,0.6) 48%,
-            transparent 35%
+            rgba(0,0,0,0.55) 72%,
+            transparent 88%
           )]
         "
       />
 
-      {/* ================= TOP BLUR VEIL ================= */}
-      {/* This adds softness so the edge feels smoky, not cut */}
+      {/* ================= TOP BLEND VEIL ================= */}
       <div
         className="
           pointer-events-none absolute top-0 left-0 right-0
-          h-[90px]
+          h-[140px] md:h-[170px]
           bg-[linear-gradient(
             180deg,
-            rgba(26,25,22,0.35),
-            rgba(26,25,22,0.25),
+            rgba(26,25,22,0.92),
+            rgba(26,25,22,0.55),
             transparent
           )]
-          backdrop-blur-[-10px]
+          blur-[1px]
         "
       />
 
@@ -65,11 +75,11 @@ export function BottomSmokeVideo({ className }: { className?: string }) {
       <div
         className="
           pointer-events-none absolute inset-x-0 bottom-0
-          h-[170px]
+          h-[220px]
           bg-[linear-gradient(
             180deg,
             transparent,
-            rgba(0,0,0,0.92)
+            rgba(0,0,0,0.94)
           )]
         "
       />
