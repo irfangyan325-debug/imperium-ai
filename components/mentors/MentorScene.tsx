@@ -264,7 +264,7 @@ export function MentorScene({ mentors, activeIndex, onFocus }: MentorSceneProps)
         <div className="pointer-events-none absolute inset-[10px] z-20 " />
 
         {/* ===================== SCENE STRIP (TRUE BLEND) ===================== */}
-        <div className="relative grid h-[420px] w-full grid-cols-3 md:h-[520px]">
+        <div className="relative grid h-[420px] w-full grid-cols-3 md:h-[520px] brightness-200">
           {/* Machiavelli (fade OUT on right edge) */}
           <button
             type="button"
