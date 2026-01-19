@@ -278,6 +278,7 @@ import { MOTION } from "@/lib/motion";
 import { DecreePlateButton } from "../ui/DecreePlateButton";
 import router from "next/router";
 import { ROUTES } from "@/config/routes";
+import { Fullscreen } from "lucide-react";
 
 type MentorSceneProps = {
   mentors: Mentor[];
@@ -322,7 +323,7 @@ export function MentorScene({
                 fill
                 priority
                 className={cn(
-                  "object-cover object-center",
+                  "object-cover object-center w-[400px] h-[800px]",
                   "contrast-[1.02] saturate-[0.92]",
                   activeIndex === idx
                     ? "brightness-105"
@@ -393,7 +394,7 @@ export function MentorScene({
             })}
           </div>
 
-          <div className="grid grid-cols-1 gap-5 bg-black/60 px-6 py-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 bg-black/60 px-6 py-6 md:grid-cols-3 mb-6">
             {mentors.map((m) => (
               <DecreePlateButton
                 key={m.key}
