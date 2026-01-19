@@ -48,20 +48,6 @@ export default function SelectionHallPage() {
           <MentorScene mentors={mentors} activeIndex={active} onFocus={setActive} />
         </div>
 
-        {/* Main CTAs (Decree Plate style) */}
-        <div className="relative z-10 mx-auto mt-10 grid w-full grid-cols-1 gap-5 md:grid-cols-3">
-          {mentors.map((m) => (
-            <DecreePlateButton
-              key={m.key}
-              fullWidth
-              onClick={() => router.push(ROUTES.mentor(m.key))}
-            >
-              {m.cta}
-            </DecreePlateButton>
-          ))}
-        </div>
-
-        
       </div>
       
       <div className="mt-10 flex justify-center">
