@@ -295,7 +295,7 @@ export function MentorScene({
 
   return (
     <div className="relative mx-auto mt-10 w-full overflow-hidden">
-      <div className="relative h-[520px] w-full overflow-hidden border border-imperium-gold/25 bg-black shadow-[0_0_70px_rgba(0,0,0,0.9)]">
+      <div className="relative h-[620px] w-full overflow-hidden border border-imperium-gold/25 bg-black shadow-[0_0_70px_rgba(0,0,0,0.9)]">
 
         <div className="absolute inset-0 z-0 grid grid-cols-3 brightness-100">
           {[m0, m1, m2].map((m, idx) => (
@@ -394,7 +394,7 @@ export function MentorScene({
             })}
           </div>
 
-          <div className="grid grid-cols-1 gap-5 bg-black/60 px-6 py-6 md:grid-cols-3 mb-6">
+          <div className="grid grid-cols-1 gap-5 bg-black/60 px-6 py-6 md:grid-cols-3 mb-20">
             {mentors.map((m) => (
               <DecreePlateButton
                 key={m.key}
